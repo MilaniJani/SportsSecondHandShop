@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 会員情報関連の処理 SQL -->
+<mapper namespace="com.wfteamlab.engineering.member.dao.MemberMapper"> 
+
+<select id="selectOne" parameterType="string" resultType="member">
+	select 
+		member_id
+		,password
+		,name
+		,email
+		,address
+		,phonenum
+		,birthDate
+		,postCode
+		,to_char(joindate, 'YYYY-MM-DD') joindate
+		,memberAuth
+	from
+		member_SecondHandShop
+	where
+		member_id = #{id} 		
+	
+</select>
+
+<insert id="insertMember" parameterType="member">
+	insert into
+	 	member_SecondHandShop
+	 	(
+			member_id
+			,password
+			,email
+			,name
+			,birthDate
+			,phonenum
+			,postCode
+			,address
+			
+		)values(
+			#{member_id}
+			,#{password}
+			,#{email}
+			,#{name}
+			,#{birthDate}
+			,#{phonenum}
+			,#{postCode}
+			,#{address}
+			
+		)
+</insert>
+
+<update id="updateMember" parameterType="member">
+		update
+			member_SecondHandShop
+			set
+				password = #{password}
+				,email = #{email}
+				,birthDate = #{birthDate}
+				,phonenum = #{phonenum}
+				,postCode = #{postCode}
+				,address = #{address}
+		where
+			member_id = #{member_id}		
+	</update> 
+	
+</mapper> 

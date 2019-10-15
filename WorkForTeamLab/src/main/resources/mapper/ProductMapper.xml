@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Product関連の処理 SQL -->
+<mapper namespace="com.wfteamlab.engineering.product.dao.ProductMapper"> 
+
+
+<!-- 商品をDBに登録するSQL処理 -->
+<insert id="insertProduct" parameterType="product">
+	insert into
+	 	Product_sec
+	 	(
+			prod_num
+			,prod_sellId
+			,prod_category
+			,prod_name
+			,prod_price
+			,prod_info
+			,prod_DeliType
+			,prod_Deliplace
+			<if test="prod_originalfile != null and prod_savedfile != null">
+			,prod_originalfile
+			,prod_savedfile
+			</if>
+		)values(
+			Prod_num_seq.nextval
+			 ,#{prod_sellId}
+			 ,#{prod_category}
+			 ,#{prod_name}
+			 ,#{prod_price}
+			 ,#{prod_info}
+			 ,#{prod_DeliType}
+			 ,#{prod_Deliplace}
+			<if test="prod_originalfile != null and prod_savedfile != null">
+			,#{prod_originalfile}
+			,#{prod_savedfile}
+			</if>
+		)
+</insert>
+
+ <!-- 登録している商品を全部見せる-->
+ <select id="showList" resultType="product">
+		select
+			prod_sellId
+			,prod_name
+			,prod_price
+			,to_char(prod_inputDate, 'YYYY-MM-DD') prod_inputDate
+		from
+			Product_sec
+		order by
+			prod_num desc
+ </select> 
+
+
+
+
+</mapper> 

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- QnA関連の処理 SQL -->
+<mapper namespace="com.wfteamlab.engineering.qna.dao.QnAMapper"> 
+
+ <select id="getQnAList" resultType="qnaContact">
+	select 
+		qna_num
+		,qna_ID
+		,qna_title
+		<!-- ,qna_contents -->
+		,qna_email
+		,to_char(qna_writeDate, 'YYYY-MM-DD') qna_writeDate
+		,qna_status
+		,qna_resolveDate
+	from
+		QnAContact
+	
+</select> 
+
+<insert id="insertQnAContact" parameterType="qnaContact">
+	insert into
+	 	QnAContact
+	 	(
+			qna_num
+			,qna_ID
+			,qna_title
+			,qna_contents
+			,qna_email
+			
+		)values(
+			QnAContact_seq.nextval
+			,#{qna_ID}
+			,#{qna_title}
+			,#{qna_contents}
+			,#{qna_email}
+			
+		)
+</insert>
+
+<!-- <select id="showList" parameterType="hashmap" resultType="board">
+		select
+			revw_boardnum
+			,revw_title
+			,revw_id
+			,revw_hits
+			,to_char(revw_inputdate, 'YYYY-MM-DD') revw_inputdate
+		from
+			revw_board
+			<if test="searchText != null">
+		where	
+			${searchSelect} like '%' || #{searchText} || '%' 
+		</if>
+		order by
+			revw_boardnum desc
+	</select> -->
+
+<!-- <update id="updateMember" parameterType="member">
+		update
+			member_SecondHandShop
+			set
+				password = #{password}
+				,name = #{name}
+				,email = #{email}
+				,phonenum = #{phonenum}
+				,address = #{address}
+		where
+			member_id = #{member_id}		
+	</update> 
+ -->	
+</mapper> 
