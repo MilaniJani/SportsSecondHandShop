@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- QnA関連の処理 SQL -->
+<mapper namespace="com.wfteamlab.engineering.qna.dao.QnAMapper"> 
+	<!-- QnA内容取得処理 -->
+	<select id="getQnAList" resultType="qnaContact">
+		select 
+			qna_num
+			,qna_ID
+			,qna_title
+			<!-- ,qna_contents -->
+			,qna_email
+			,to_char(qna_writeDate, 'YYYY-MM-DD') qna_writeDate
+			,qna_status
+			,qna_resolveDate
+		from
+			QnAContact
+	</select> 
+	<!-- QnA内容保存処理 -->
+	<insert id="insertQnAContact" parameterType="qnaContact">
+		insert into
+		 	QnAContact
+		 	(
+				qna_num
+				,qna_ID
+				,qna_title
+				,qna_contents
+				,qna_email
+			)values(
+				QnAContact_seq.nextval
+				,#{qna_ID}
+				,#{qna_title}
+				,#{qna_contents}
+				,#{qna_email}
+			)
+	</insert>
+</mapper> 
