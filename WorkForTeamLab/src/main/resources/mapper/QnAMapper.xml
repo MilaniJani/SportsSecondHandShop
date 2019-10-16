@@ -18,6 +18,8 @@
 			,qna_resolveDate
 		from
 			QnAContact
+		order by
+			qna_num desc	
 	</select> 
 	<!-- QnA内容保存処理 -->
 	<insert id="insertQnAContact" parameterType="qnaContact">

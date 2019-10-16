@@ -42,7 +42,7 @@
           </li>
 	      <!-- Managerの画面設定	 -->
 	      <li class="nav-item">
-            <a class="nav-link" href="qnaContact/QnABoard">Q&A
+            <a class="nav-link" href="#">Q&A
             <span class="sr-only">(current)</span>
             </a>
           </li>
@@ -85,6 +85,7 @@
 		        	<th>タイトル</th>
 		        	<th>作成者</th>
 		        	<th>依頼日付</th>
+		        	<th>ステータス</th>
 		        </tr>
 	        </thead>
         	<tbody>
@@ -94,6 +95,14 @@
         			<td>${list.qna_title}</td>
         			<td>${list.qna_ID}</td>
         			<td>${list.qna_writeDate}</td>
+        			<c:choose>
+        			<c:when test="${list.qna_status != 1} ">
+        			<td>処理完了</td>
+        			</c:when>
+        			<c:otherwise>
+        			<td>処理中</td>
+        			</c:otherwise>
+        			</c:choose>
         		</tr>
         	</c:forEach>
         	</tbody>

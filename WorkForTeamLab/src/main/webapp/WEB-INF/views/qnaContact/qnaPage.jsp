@@ -16,6 +16,13 @@
 <script type="text/javascript" src="<c:url value="/resources/js/jquery-3.2.1.js"/>"></script>
 <!-- Bootstrap core JavaScript -->
 <script src="<c:url value="/resources/js/bootstrap.js"/>"></script>
+<script type="text/javascript">
+$( function() {
+	$('#submitBtn').click(function(){
+		alert("お問い合わせの転送完了");
+	});
+});
+</script>
 <title> Q&A - Contact </title>
 </head>
 <body>
@@ -113,7 +120,7 @@
 	                            <textarea class="form-control" name="qna_contents" id="qna_contents" rows="6" required></textarea>
 	                        </div>
 	                        <div class="mx-auto">
-	                        <button type="submit" class="btn btn-primary text-right">Submit</button></div>
+	                        <button type="submit" class="btn btn-primary text-right" id="submitBtn">Submit</button></div>
 	                    </form>
 	                </div>
 	            </div>

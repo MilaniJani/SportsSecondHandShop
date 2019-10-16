@@ -43,7 +43,7 @@
           <!--ログインしているかどうか確認 -->
          	<c:choose>
  		 	<c:when test="${loginId == null }">
- 		 　<!--会員加入 -->
+		  <!--会員加入 -->
           <li class="nav-item">
             <a class="nav-link" href="member/joinFormPage">Join
             <span class="sr-only">(current)</span>
@@ -57,7 +57,7 @@
           </li>
           	</c:when>
           	<c:when test="${areYouManager != 1 }">
-       　　　<!--QnAのページに移動 -->
+		<!--QnAのページに移動 -->
           <li class="nav-item">
             <a class="nav-link" href="qnaContact/QnAPage">Q&A
             <span class="sr-only">(current)</span>
